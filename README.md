@@ -20,8 +20,8 @@ When they click on the link to the notes page then they are presented with a pag
 ***
 
 ## Visuals
-![note-taker](Assets/note-taker-one.png "note-taker")
-![note-taker](Assets/note-taker-two.png "note-taker")
+![note-taker](assets/note-taker-one.png "note-taker")
+![note-taker](assets/note-taker-two.png "note-taker")
 
 
  
