@@ -2,9 +2,7 @@
 const express = require('express');
 const fs = require('fs');
 const util = require('util');
-
 const path = require('path');
-const notes = require('./db/db.json');
 
 // Helper method for generating unique ids
 const uuid = require('./helpers/uuid');
@@ -17,17 +15,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// GET Request for notes page
+// GET Request for notes 
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
-
-// POST Request for api/notes
+// GET Request for api/notes
 app.get("/api/notes", (req, res) => {
   res.sendFile(path.join(__dirname, '/db/db.json'))
 })
-
-// GET Request for homepage
+// GET Request for home
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'))
 });
@@ -36,13 +32,11 @@ app.get('*', (req, res) => {
 app.post('/api/notes', (req, res) => {
   // Log that a POST request was received
   console.info(`${req.method} request received to add a note`);
-
   // Destructuring assignment for the items in req.body
   const newNote = req.body;
   newNote.id = uuid()
 
   if (req.body) {
-
     // Obtain existing notes
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
       if (err) {
@@ -50,14 +44,12 @@ app.post('/api/notes', (req, res) => {
       } else {
         // Convert string into JSON object
         const parsedNotes = JSON.parse(data);
-
-        // Add a new review
+        // Add a new note
         parsedNotes.push(newNote);
-
-        // Write updated reviews back to the file
+        // Write updated notes back to the file
         fs.writeFile(
           './db/db.json',
-          JSON.stringify(parsedNotes, null, 4),
+          JSON.stringify(parsedNotes, null, 2),
           (writeErr) =>
             writeErr
               ? console.error(writeErr)
@@ -69,7 +61,6 @@ app.post('/api/notes', (req, res) => {
       status: 'Success!',
       body: newNote,
     };
-
     console.log(response);
     res.status(201).json(response);
   } else {
@@ -77,22 +68,7 @@ app.post('/api/notes', (req, res) => {
   }
 });
 
-// 11-Express > 01-Activities > 23-Ins_Custom-Middleware
-app.delete('api/notes/:id', (req, res) => {
-  let parsedNotes = JSON.parse(fs.readfilesync("./db/db.json"), utf8);
-  const noteId = req.params.id;
-  parsedNotes.
-
-
-  fs.writeFile(
-    './db/db.json',
-    JSON.stringify(parsedNotes, null, 4),
-    (writeErr) =>
-      writeErr
-        ? console.error(writeErr)
-        : console.info('Successfully updated notes!')
-  );
-});
+// Attempted the DELETE but couldn't quite get it functional. But I'll keep trying for the fun of it!
 
 //Server listener
 app.listen(PORT, () =>

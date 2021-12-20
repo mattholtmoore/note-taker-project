@@ -1,11 +1,32 @@
 [
-    {
-        "title": "Test Title",
-        "text": "Test text"
-    },
-    {
-        "title": "Test Title",
-        "text": "Note test",
-        "id": "f7fd"
-    }
+  {
+    "title": "Hello world!",
+    "text": "the moon says hello...",
+    "id": "73d5"
+  },
+  {
+    "title": "Hello Moon!",
+    "text": "the world says hello...",
+    "id": "ff34"
+  },
+  {
+    "title": "This Is Fun",
+    "text": "good times!",
+    "id": "ea67"
+  },
+  {
+    "title": "Learn how to DELETE!",
+    "text": "I tried and didn't quite get it working. I'll get it though! ",
+    "id": "35e3"
+  },
+  {
+    "title": "CRUD",
+    "text": "post = Create\nget = Read\nput = Update\ndelete = Delete",
+    "id": "f41f"
+  },
+  {
+    "title": "When in doubt, sound it out!",
+    "text": "(request, response) = (req, res)",
+    "id": "8ffe"
+  }
 ]
